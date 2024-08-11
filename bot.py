@@ -4,7 +4,7 @@ import pyowm
 from newsapi import NewsApiClient
 
 
-BOT_TOKEN = "7070740348:AAH2AX_T7lyvZhvt5NXAyuHl9XY1rEjmCdg" 
+BOT_TOKEN = "your_bot_token" 
 '''
 To get your bot API token
 Search botfather on telegram and start a chat
@@ -53,7 +53,7 @@ def fetch_horoscope(message, sign): #returns users horoscope based on sign & day
 
 
 
-owm = pyowm.OWM('0607e30b1ccfd2fc547ff594b2b72255')
+owm = pyowm.OWM('your_owm_api')
 ''' 
 To get you Weather API go to 'OpenWeatherMap'
 Create your account and you'll get your API key
@@ -76,7 +76,7 @@ def get_weather(message):
 
 
 
-newsapi = NewsApiClient(api_key="dba9406c63454767a0d7f7617981f707")
+newsapi = NewsApiClient(api_key="your_newsAPI")
 '''
 To get you News API key go to 'NewsAPI'
 Create your account and you'll get your API key
