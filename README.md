@@ -1,53 +1,50 @@
-# Telegram Horoscope Chatbot
+# Shy Assisstant
 
-This project is a simple yet effective Telegram chatbot that provides users with their daily horoscope based on their zodiac sign and the desired day.
+## Overview
 
-## Getting Started
+Your Bot Name is a versatile chatbot designed to offer a wide range of functionalities to make interactions fun and informative. Originally starting with horoscope services, it has evolved to include various other features to cater to different needs and interests.
 
-Follow these steps to set up and run the Telegram Horoscope Chatbot:
+## Features
 
-### Step 1: Create a Telegram Bot
+- **Horoscope**: Get daily, weekly, or monthly horoscopes for your zodiac sign.
+- **Weather Updates**: Retrieve current weather conditions for any city.
+- **News Headlines**: Stay updated with the latest top headlines from around the world.
+- **Trivia**: Engage in fun and challenging trivia questions on various topics.
+- **Jokes**: Enjoy a collection of jokes to lighten up your day.
+- **Quotes**: Receive motivational and inspirational quotes.
+- **Custom Commands**: Experience personalized commands tailored to your preferences.
 
-1. Open the Telegram app and search for **BotFather**.
-2. Start a chat with BotFather, type `/newbot` to create a new bot.
-3. Follow the prompts to give your bot a name and a username and then lastly **Copy your token**.
+## How to Use
 
-### Step 2: Set Up the Project
+1. **Start the Bot**: Begin by sending a `/start` command to initiate interaction.
+2. **Explore Commands**:
+   - `/weather [city]`: Get the current weather for the specified city.
+   - `/headlines`: Retrieve the latest news headlines.
+   - `/trivia`: Challenge yourself with trivia questions.
+   - `/joke`: Receive a joke to brighten your day.
+   - `/quote`: Get a motivational or inspirational quote.
+3. **Interactive Features**: Engage with the bot through various interactive commands and responses.
 
-1. Clone this repository or download the source code to your local machine.
+## Installation
+
+1. Clone the repository:
    ```bash
-   git clone https://github.com/TilakMirajkar/Telegram-Horoscope-Bot.git
+   git clone https://github.com/yourusername/yourbotname.git
    ```
-2. Install the required Python libraries by running:
+
+2. Install dependencies:
    ```bash
-   pip install pyTelegramBotAPI requests
-   ```
-3. Open the `bot.py` file in your preferred code editor.
-4. Locate the `BOT_TOKEN` variable and replace `"your_bot_token_here"` with the API token you obtained from BotFather:
-   ```python
-   BOT_TOKEN = "your_bot_token_here"
+   pip install -r requirements.txt
    ```
 
-### Step 3: Run the Bot
+3. Configure your bot:
+   - Update the bot token and other settings in the configuration file.
 
-1. Run the bot by executing the following command:
+4. Run the bot:
    ```bash
    python bot.py
    ```
 
-### Step 4: Interact with Your Bot
+## Contributing
 
-1. Open Telegram and search for your bot using the username you provided during setup.
-2. Start a chat with your bot by clicking on it and typing `/start`.
-3. You can now use commands like `/horoscope` to interact with your bot and receive your daily horoscope.
-
-## Commands
-
-- `/start` or `/hello`: Starts the bot and greets the user.
-- `/horoscope`: Initiates the process of retrieving your daily horoscope.
-
-## Conclusion
-
-This Telegram Horoscope Chatbot is a straightforward and enjoyable way to receive daily horoscopes. With just a few simple steps, you can have your own personal horoscope bot running and ready to provide insights to you and your friends.
-
-Feel free to customize and expand the bot to add more features or improve its functionality!
+Feel free to contribute by adding new features, fixing bugs, or improving documentation. Open a pull request or file an issue to start collaborating.
