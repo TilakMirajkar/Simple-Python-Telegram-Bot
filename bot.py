@@ -1,8 +1,9 @@
 import telebot
 import requests
+import pyowm
 
 
-BOT_TOKEN = "your_bot_api_token" 
+BOT_TOKEN = "7070740348:AAH2AX_T7lyvZhvt5NXAyuHl9XY1rEjmCdg" 
 '''
 To get your bot API token
 Search botfather on telegram and start a chat
@@ -48,6 +49,28 @@ def fetch_horoscope(message, sign): #returns users horoscope based on sign & day
         bot.send_message(message.chat.id, horoscope_message, parse_mode="Markdown")
     else:
         bot.send_message(message.chat.id, "Sorry, I couldn't fetch the horoscope. Please try again.")
+
+
+
+owm = pyowm.OWM('0607e30b1ccfd2fc547ff594b2b72255')
+manager = owm.weather_manager()
+
+
+@bot.message_handler(commands=['weather'])
+def get_weather_msg(message):
+    text = "Which city's weather would you like to get?"
+    sent_msg = bot.send_message(message.chat.id, text, parse_mode="Markdown")
+    bot.register_next_step_handler(sent_msg, get_weather)
+
+def get_weather(message):
+    city = message.text  
+    observation = manager.weather_at_place(city)
+    w = observation.weather
+    sent_message = f"Weather in {city}: {w.status}, {w.temperature('celsius')['temp']}°C"
+    bot.send_message(message.chat.id, sent_message)
+    
+
+
 
 bot.infinity_polling() #to launch the bot
 
