@@ -1,6 +1,7 @@
 import telebot
 import requests
 import pyowm
+from newsapi import NewsApiClient
 
 
 BOT_TOKEN = "7070740348:AAH2AX_T7lyvZhvt5NXAyuHl9XY1rEjmCdg" 
@@ -15,7 +16,7 @@ bot = telebot.TeleBot(BOT_TOKEN) #creates a bot instance
 
 @bot.message_handler(commands=['start', 'hello']) #if user texts 'start' or 'hello', it replies
 def send_welcome(message):
-    bot.reply_to(message, "Hey, how are you doing?")
+    bot.reply_to(message, "Hey, how are you doing?\n Here are some available commands\n/horoscope\n/weather\n/news")
 
 
 def get_daily_horoscope(sign: str, day: str) -> dict: #this function is used to get daily horoscope
@@ -53,10 +54,12 @@ def fetch_horoscope(message, sign): #returns users horoscope based on sign & day
 
 
 owm = pyowm.OWM('0607e30b1ccfd2fc547ff594b2b72255')
-manager = owm.weather_manager()
+''' 
+To get you Weather API go to 'OpenWeatherMap'
+Create your account and you'll get your API key
+'''
 
-
-@bot.message_handler(commands=['weather'])
+@bot.message_handler(commands=['weather']) #if user texts 'weather' bot asks the city for the weather, jumps to get_weather function
 def get_weather_msg(message):
     text = "Which city's weather would you like to get?"
     sent_msg = bot.send_message(message.chat.id, text, parse_mode="Markdown")
@@ -64,7 +67,8 @@ def get_weather_msg(message):
 
 def get_weather(message):
     city = message.text  
-    observation = manager.weather_at_place(city)
+    manager = owm.weather_manager()
+    observation = manager.weather_at_place(city) #get weather of the city
     w = observation.weather
     sent_message = f"Weather in {city}: {w.status}, {w.temperature('celsius')['temp']}°C"
     bot.send_message(message.chat.id, sent_message)
@@ -72,6 +76,23 @@ def get_weather(message):
 
 
 
+newsapi = NewsApiClient(api_key="dba9406c63454767a0d7f7617981f707")
+'''
+To get you News API key go to 'NewsAPI'
+Create your account and you'll get your API key
+'''
+
+@bot.message_handler(commands=['news']) #if user texts 'news' bot generates top 10 headline from US in English
+def get_top_headlines(message):
+    bot.send_message(message.chat.id, "Here's Top Headlines!")
+    top_headlines = newsapi.get_top_headlines(language='en', country='us') #get top headlines data
+    headlines=''
+    for i, article in enumerate(top_headlines['articles'][:10], start=1):
+        headlines += f"{i}. {article['title']}\n" #get first 10 articles and their titles
+    bot.send_message(message.chat.id, headlines)
+    return 0
+
+
+
+
 bot.infinity_polling() #to launch the bot
-
-
