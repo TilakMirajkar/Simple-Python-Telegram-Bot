@@ -1,9 +1,5 @@
 # Shy Assisstant
 
-## Overview
-
-Your Bot Name is a versatile chatbot designed to offer a wide range of functionalities to make interactions fun and informative. Originally starting with horoscope services, it has evolved to include various other features to cater to different needs and interests.
-
 ## Features
 
 - **Horoscope**: Get daily, weekly, or monthly horoscopes for your zodiac sign.
